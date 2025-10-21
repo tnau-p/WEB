@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng</title>
+  <link rel="stylesheet" href="giohang.css">
+</head>
+<body>
+<header class="header">
+  <div class="menu-toggle" id="menu-btn">☰</div>
+  <div class="logo-header">
+    <a href="index.html" class="logo-main">
+    <img src="image/logo.png" alt="">
+    <span>PATEONDE</span>
+  </a>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="search-input" class="search-bar" placeholder="Tìm kiếm sản phẩm...">
+    <button class="search-btn">🔍</button>
+  </div>
+<!--Giỏ -->
+  <div class="user-info">
+    <div class="cart-section">
+      <button id="view-cart-btn" class="cart-btn">
+  🛒
+  <span id="cart-count" class="cart-count">0</span>
+</button>
+
+    <!-- Đăng nhập / Hồ sơ người dùng -->
+    <div class="auth-section">
+      <a href="auth.html" id="login-link" class="login-btn">
+        <span class="login-icon">👤</span>
+        <span class="login-text">Đăng nhập</span>
+      </a>
+      <div id="user-profile" class="user-profile hidden">
+        <span class="user-icon">👤</span>
+        <span id="username-display">Người dùng</span>
+        <div id="logout-menu" class="logout-menu hidden">
+          <button id="logout-btn">Đăng xuất</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <ul>
+    <li><a href="index.html"><span class="icon">🏠</span><span class="text-label">Trang chủ</span></a></li>
+    <li><a href="vanphongpham.html"><span class="icon">📄</span><span class="text-label">Văn Phòng Phẩm</span></a></li>
+    <li><a href="dodunghoctap.html"><span class="icon">📏</span><span class="text-label">Dụng cụ học tập</span></a></li>
+    <li><a href="sach.html"><span class="icon">📖</span><span class="text-label">Sách</span></a></li>
+    <li><a href="#"><span class="icon">☎️</span><span class="text-label">Liên hệ</span></a></li>
+  </ul>
+
+  <div class="sidebar-logo">
+    <img src="image/logo.png" alt="Logo SUNSTORE">
+    <span>SUNSTORE</span>
+  </div>
+</aside>
+  <main>
+    <h1>🛒 Giỏ hàng của bạn</h1>
+
+    <div class="box cart-info">
+      <div class="cart-box">
+        <h2>Giỏ hàng</h2>
+        <ul id="cart"></ul>
+        <p><strong>Tổng tiền:</strong> <span id="total">0</span> đ</p>
+      </div>
+
+      <div class="info-box">
+        <h2>Thông tin người mua</h2>
+        <form id="checkoutForm">
+          <label>Họ và tên:</label>
+          <input type="text" id="name" required>
+
+          <label>Số điện thoại:</label>
+          <input type="text" id="phone" required>
+
+          <label>Địa chỉ:</label>
+          <textarea id="address" rows="3" required></textarea>
+
+          <label>Ghi chú:</label>
+          <textarea id="note" rows="3"></textarea>
+        </form>
+        <button class="pay-btn" onclick="checkout()">Thanh toán</button>
+      </div>
+    </div>
+
+    <!-- Gợi ý sản phẩm -->
+    <section class="hot-products box">
+      <h2>SẢN PHẨM BÁN CHẠY</h2>
+      <div class="product-container">
+        <button onclick="prev()">◀</button>
+
+        <div class="product">
+          <img src="image\balo.jpg" alt="">
+          <h3>Balo học sinh</h3>
+          <p class="price">538.000đ</p>
+        
+        </div>
+
+        <div class="product">
+          <img src="image\taygom.jpg" alt="">
+          <h3>Tẩy gôm</h3>
+          <p class="price">5.000₫</p>
+         
+        </div>
+
+        <div class="product">
+          <img src="image\biacong.jpg" alt="">
+          <h3>Bìa còng</h3>
+          <p class="price">20.000đ</p>
+       
+        </div>
+
+        <div class="product">
+          <img src="image\but2lai.jpg" alt="">
+          <h3>Bút hightlight</h3>
+          <p class="price">22.000đ</p>
+       
+        </div>
+
+        <div class="product">
+          <img src="image\so-tay-mini-1.png" alt="">
+          <h3>Sổ dễ thương</h3>
+          <p class="price">30.000đ</p>
+         
+        </div>
+
+
+        <button onclick="next()">▶</button>
+      </div>
+    </section>
+  </main>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>📍  Trường Đại Học Giao Thông Vận Tải, Quận Cầu Giấy, TP Hà Nội | 📞 0866.265.325 | ✉️ 4tl@gmail.com</p>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Văn Phòng Phẩm SUNSTORE | All rights reserved.</p>
+  </div>
+</footer>
+
+  <script src="giohang.js"></script>
+</body>
+</html>

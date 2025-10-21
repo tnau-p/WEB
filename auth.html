@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký / Đăng nhập</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+
+
+<body class="auth-page">
+  <header class="header">
+  <div class="logo-header">
+    <a href="index.html" class="logo-main">
+    <img src="image/logo.png" alt="">
+    <span>PATEONDE</span>
+  </a>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="search-input" class="search-bar" placeholder="Tìm kiếm sản phẩm...">
+    <button class="search-btn">🔍</button>
+  </div>
+
+  <div class="user-info">
+    <div class="cart-section">
+      <button id="view-cart-btn" class="cart-btn">🛒</button>
+    </div>
+    <div class="auth-section">
+      <a href="auth.html" id="login-link" class="login-btn">
+        <span class="login-icon">👤</span>
+        <span class="login-text">Đăng nhập</span>
+      </a>
+    </div>
+  </div>
+</header>
+  <!--  Các ô vuông nền trôi -->
+  <div class="floating-square"></div>
+  <div class="floating-square"></div>
+  <div class="floating-square"></div>
+  <div class="floating-square"></div>
+  <div class="floating-square"></div>
+
+  <!--  Khung đăng nhập / đăng ký -->
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2 id="form-title">Đăng nhập</h2>
+
+      <!-- LOGIN FORM -->
+<form id="login-form">
+  <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
+  <input type="password" id="login-password" placeholder="Mật khẩu" required>
+  <button type="submit">Đăng nhập</button>
+  <p id="login-message" class="message"></p> <!-- thêm dòng này -->
+  <p><a href="#" id="forgot-password">Bạn đã quên mật khẩu?</a></p>
+  <p>Chưa có tài khoản? <a href="#" id="show-register">Đăng ký ngay</a></p>
+</form>
+
+<!-- REGISTER FORM -->
+<form id="register-form" class="hidden">
+  <input type="text" id="reg-username" placeholder="Tên đăng nhập" required>
+  <input type="email" id="reg-email" placeholder="Email" required>
+  <input type="password" id="reg-password" placeholder="Mật khẩu" required>
+  <button type="submit">Đăng ký</button>
+  <p id="register-message" class="message"></p> <!-- thêm dòng này -->
+  <p>Đã có tài khoản? <a href="#" id="show-login">Đăng nhập</a></p>
+</form>
+
+    </div>
+  </div>
+<!-- POPUP QUÊN MẬT KHẨU -->
+<div id="reset-popup" class="popup hidden">
+  <div class="popup-content">
+    <h3>Đặt lại mật khẩu</h3>
+    <input type="email" id="reset-email" placeholder="Nhập email của bạn">
+    <input type="password" id="reset-newpass" placeholder="Mật khẩu mới">
+    <button id="reset-confirm">Xác nhận</button>
+    <p id="reset-message" class="message"></p>
+    <button id="reset-close">Đóng</button>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-content">
+    <p>📍  Trường Đại Học Giao Thông Vận Tải, Quận Cầu Giấy, TP Hà Nội | 📞 0866.265.325 | ✉️ 4tl@gmail.com</p>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Văn Phòng Phẩm SUNSTORE | All rights reserved.</p>
+  </div>
+</footer>
+
+  <script src="auth.js"></script>
+</body>
+
+</html>
+
+</body>
+</html>

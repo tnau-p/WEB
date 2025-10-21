@@ -1,0 +1,440 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  width: 100%;
+  background-color: #17479d;
+  color: white;
+  display: flex;
+  align-items: center;
+  align-content:center ;
+  justify-content: space-between;
+  padding: 10px 10px 10px 5px;
+  gap: 10px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+   z-index: 999;
+}
+
+.logo-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.logo-main img {
+  width: 60px;
+  height: 40px;
+}
+
+.logo-main span {
+  font-size: 26px;
+  font-weight: bold;
+  font-family: Georgia, serif;
+}
+.search-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  max-width: 700px;
+  min-width: 250px;
+  width: 100%;
+}
+.search-bar {
+  width:100%;
+  padding: 8px 40px 8px 12px; /* chừa chỗ bên phải cho nút */
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.search-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+.search-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+.header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+/* Giỏ hàng */
+.cart-section {
+  background-color: white;
+  border-radius: 14px;
+  padding: 4px 6px;
+  box-shadow: 0 0 4px rgb(255, 255, 255);
+}
+.cart-btn {
+  font-size: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;  
+}
+/* Nút đăng nhập (icon + chữ cùng bấm được) */
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #17479d;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-weight: 500;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.1s;
+  backdrop-filter: calc();
+}
+.login-btn:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: white;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,255,255,0.25);
+}
+.login-icon {
+  font-size: 17px;
+}
+.user-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#username-display {
+  font-weight: 600;
+  color: #333;
+}
+
+.logout-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.logout-menu.hidden {
+  display: none;
+}
+
+.user-profile:hover .logout-menu {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+
+/* ---- AUTH PAGE ---- */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(200deg, #3ea3c8, #17479d);
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+  padding-top: 80px;  /* chừa chỗ cho header */
+  padding-bottom: 80px; /* chừa chỗ cho footer */
+  box-sizing: border-box;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.15); /* trong suốt nhẹ */
+  backdrop-filter: blur(15px); /* kính mờ */
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.auth-box h2 {
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.auth-box label {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  outline: none;
+}
+
+.auth-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.auth-box button {
+  width: 100%;
+  background: #ffdb4d;
+  color: #333;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-box button:hover {
+  background: #ffe97a;
+}
+
+.auth-box p {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.auth-box a {
+  color: #ffe97a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+/* Hiệu ứng chuyển đổi giữa đăng nhập và đăng ký */
+.auth-box {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.auth-box.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+#forgot-password {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+#forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* ---- HIỆU ỨNG Ô VUÔNG FLOATING ---- */
+.floating-square {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  animation: floatUp 12s linear infinite;
+  backdrop-filter: blur(5px);
+}
+
+/* tạo nhiều ô vuông khác nhau */
+.floating-square:nth-child(1) {
+  left: 10%;
+  width: 60px;
+  height: 60px;
+  animation-duration: 10s;
+}
+.floating-square:nth-child(2) {
+  left: 25%;
+  width: 100px;
+  height: 100px;
+  animation-duration: 14s;
+}
+.floating-square:nth-child(3) {
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  animation-duration: 16s;
+}
+.floating-square:nth-child(4) {
+  left: 70%;
+  width: 90px;
+  height: 90px;
+  animation-duration: 18s;
+}
+.floating-square:nth-child(5) {
+  left: 85%;
+  width: 110px;
+  height: 110px;
+  animation-duration: 20s;
+}
+
+/* animation cho ô vuông bay lên */
+@keyframes floatUp {
+  0% {
+    bottom: -120px;
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 110%;
+    opacity: 0;
+    transform: translateY(-50px) rotate(360deg);
+  }
+}
+/* Đảm bảo ô vuông không che nội dung */
+.auth-page .floating-square {
+  z-index: 0;
+}
+.auth-container {
+  position: relative;
+  z-index: 1;
+}
+#username-display {
+  color: white;
+  font-weight: bold;
+}
+
+/* --- THÔNG BÁO DƯỚI NÚT --- */
+.message {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 8px;
+  min-height: 18px;
+}
+
+.message.error {
+  color: #ff6b6b; /* đỏ cảnh báo */
+}
+
+.message.success {
+  color: #c6f6d5; /* xanh nhạt dễ nhìn */
+}
+/* --- POPUP QUÊN MẬT KHẨU --- */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: rgba(42, 106, 133, 0.126);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  width: 300px;
+}
+.popup-content input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.11);
+  color: rgb(255, 255, 255);
+}
+.popup-content button {
+  margin-top: 5px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #ffdb4d;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: #17479d;
+  color: white;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  padding: 15px 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer-content p {
+  margin: 0;                     
+  font-size: 15px; 
+             
+}
+.footer-bottom {
+  margin-top: 5px;             
+  font-size: 13px;               
+  opacity: 0.9;     
+           
+}
+
+@media (max-width: 700px) {
+  .search-box {
+    max-width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .search-box {
+    max-width: 80%;
+  }
+}
