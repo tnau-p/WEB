@@ -80,12 +80,18 @@ function openProductPopup(product) {
     updateCartBadge();
   }
 
+  // Cache DOM elements for better performance
+  const elements = {
+    cartCount: document.getElementById('cart-count'),
+    cart: document.getElementById('cart'),
+    total: document.getElementById('total')
+  };
+
   function updateCartBadge() {
-    const badge = document.getElementById('cart-count');
-    if (!badge) return;
+    if (!elements.cartCount) return;
     const totalQty = cart.reduce((s, it) => s + (it.quantity || 0), 0);
-    badge.textContent = totalQty;
-    badge.style.visibility = totalQty > 0 ? 'visible' : 'hidden';
+    elements.cartCount.textContent = totalQty;
+    elements.cartCount.style.visibility = totalQty > 0 ? 'visible' : 'hidden';
   }
 
   function addToCart(title, price, imgSrc) {

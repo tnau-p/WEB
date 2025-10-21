@@ -1,20 +1,29 @@
 // === Lấy phần tử ===
 const menuBtn = document.getElementById("menu-btn");
 const sidebar = document.querySelector(".sidebar");
-const mainContent = document.querySelector(".main-content");
+const mainElement = document.querySelector("main");
 
 // === Toggle menu (mở / đóng) ===
 menuBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   sidebar.classList.toggle("hidden");
-  mainContent.classList.toggle("collapsed");
+  
+  // Thêm/xóa class cho body để CSS hoạt động
+  if (sidebar.classList.contains("hidden")) {
+    document.body.classList.add("menu-closed");
+    document.body.classList.remove("menu-open");
+  } else {
+    document.body.classList.add("menu-open");
+    document.body.classList.remove("menu-closed");
+  }
 });
 
 // === Khi click vào danh mục trong sidebar -> tự đóng menu ===
 sidebar.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => {
     sidebar.classList.add("hidden");
-    mainContent.classList.remove("collapsed");
+    document.body.classList.add("menu-closed");
+    document.body.classList.remove("menu-open");
   });
 });
 

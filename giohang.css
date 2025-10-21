@@ -1,8 +1,8 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  margin: 20px;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f2f6ff;
 }
 
 h1 {
@@ -169,7 +169,6 @@ body {
   color: white;
   display: flex;
   align-items: center;
-  align-content:center ;
   justify-content: space-between;
   padding: 10px 10px 10px 5px;
   gap: 10px;
@@ -237,6 +236,11 @@ body {
   font-size: 18px;
   opacity: 0.8;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 .search-btn:hover {
   opacity: 1;
@@ -1324,4 +1328,27 @@ button:hover {
   .search-box {
     max-width: 80%;
   }
+}
+
+/* Main content responsive với sidebar */
+main {
+  margin-left: 240px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 60px);
+}
+
+/* Khi sidebar thu gọn */
+.sidebar.hidden ~ main {
+  margin-left: 80px;
+}
+
+/* Khi sidebar hoàn toàn ẩn */
+body.menu-closed main {
+  margin-left: 0;
+}
+
+/* Khi sidebar mở */
+body.menu-open main {
+  margin-left: 240px;
 }

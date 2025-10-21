@@ -24,13 +24,24 @@
 
   <div class="user-info">
     <div class="cart-section">
-      <button id="view-cart-btn" class="cart-btn">🛒</button>
-    </div>
+      <button id="view-cart-btn" class="cart-btn">
+  🛒
+  <span id="cart-count" class="cart-count">0</span>
+</button>
+
+    <!-- Đăng nhập / Hồ sơ người dùng -->
     <div class="auth-section">
       <a href="auth.html" id="login-link" class="login-btn">
         <span class="login-icon">👤</span>
         <span class="login-text">Đăng nhập</span>
       </a>
+      <div id="user-profile" class="user-profile hidden">
+        <span class="user-icon">👤</span>
+        <span id="username-display">Người dùng</span>
+        <div id="logout-menu" class="logout-menu hidden">
+          <button id="logout-btn">Đăng xuất</button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -55,67 +66,100 @@
     <section class="product-grid">
 
       <div class="product-card" data-desc="Đắc nhân tâm - Dale Carnegie, sách kỹ năng kinh điển.">
-        <img src="image\dnt.jpg" alt="">
+        <img src="image/dnt.jpg" alt="">
         <h3>Đắc nhân tâm</h3>
         <p class="price-text">78.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Tuổi trẻ đáng giá bao nhiêu - Rosie Nguyễn.">
-        <img src="image\ttdgbnh.jpg" alt="">
+        <img src="image/ttdgbnh.jpg" alt="">
         <h3>Tuổi trẻ đáng giá bao nhiêu</h3>
         <p class="price-text">65.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Tôi tài giỏi, bạn cũng thế - Adam Khoo.">
-        <img src="image\ttgbct.jpg" alt="">
+        <img src="image/ttgbct.jpg" alt="">
         <h3>Tôi tài giỏi, bạn cũng thế</h3>
-        <p class="price-text">8.0009₫</p>
+        <p class="price-text">89.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Nhà giả kim - Paulo Coelho, sách truyền cảm hứng.">
-        <img src="image\ngk.jpg" alt="">
+        <img src="image/ngk.jpg" alt="">
         <h3>Nhà giả kim</h3>
         <p class="price-text">76.000₫</p>
       </div>
 
       <div class="product-card" data-desc="7 thói quen hiệu quả - Stephen Covey.">
-        <img src="image\7tq.jpg" alt="">
+        <img src="image/7tq.jpg" alt="">
         <h3>7 Thói quen hiệu quả</h3>
         <p class="price-text">120.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Think and Grow Rich - Napoleon Hill.">
-        <img src="image\rich.jpg" alt="">
+        <img src="image/rich.jpg" alt="">
         <h3>Think and Grow Rich</h3>
         <p class="price-text">98.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Muôn kiếp nhân sinh - Nguyên Phong.">
-        <img src="image\nhansinh.jpeg" alt="">
+        <img src="image/nhansinh.jpeg" alt="">
         <h3>Muôn kiếp nhân sinh</h3>
         <p class="price-text">135.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Dám bị ghét - Kishimi Ichiro & Koga Fumitake.">
-        <img src="image\ghet.jpg" alt="">
+        <img src="image/ghet.jpg" alt="">
         <h3>Dám bị ghét</h3>
         <p class="price-text">95.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Khéo ăn nói sẽ có được thiên hạ - Trác Nhã.">
-        <img src="image\annoi.png" alt="">
+        <img src="image/annoi.png" alt="">
         <h3>Khéo ăn nói sẽ có được thiên hạ</h3>
         <p class="price-text">79.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Tony buổi sáng - Trên đường băng.">
-        <img src="image\duongbang.jpg" alt="">
+        <img src="image/duongbang.jpg" alt="">
         <h3>Trên đường băng</h3>
         <p class="price-text">72.000₫</p>
       </div>
 
     </section>
   </main>
+
+<!--TƯƠNG TÁC ĐĂNG NHẬP/ĐĂNG KÝ-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("login-link");
+  const userProfile = document.getElementById("user-profile");
+  const usernameDisplay = document.getElementById("username-display");
+  const logoutBtn = document.getElementById("logout-btn");
+  const logoutMenu = document.getElementById("logout-menu");
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (user) {
+    usernameDisplay.textContent = user.username;
+    loginLink.classList.add("hidden");
+    userProfile.classList.remove("hidden");
+  } else {
+    loginLink.classList.remove("hidden");
+    userProfile.classList.add("hidden");
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.reload();
+    });
+  }
+
+  // Hiện menu Đăng xuất khi hover
+  userProfile.addEventListener("mouseenter", () => logoutMenu.classList.remove("hidden"));
+  userProfile.addEventListener("mouseleave", () => logoutMenu.classList.add("hidden"));
+});
+</script>
 
   <script src="script.js"></script>
 

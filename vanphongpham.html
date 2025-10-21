@@ -24,13 +24,24 @@
 
   <div class="user-info">
     <div class="cart-section">
-      <button id="view-cart-btn" class="cart-btn">🛒</button>
-    </div>
+      <button id="view-cart-btn" class="cart-btn">
+  🛒
+  <span id="cart-count" class="cart-count">0</span>
+</button>
+
+    <!-- Đăng nhập / Hồ sơ người dùng -->
     <div class="auth-section">
       <a href="auth.html" id="login-link" class="login-btn">
         <span class="login-icon">👤</span>
         <span class="login-text">Đăng nhập</span>
       </a>
+      <div id="user-profile" class="user-profile hidden">
+        <span class="user-icon">👤</span>
+        <span id="username-display">Người dùng</span>
+        <div id="logout-menu" class="logout-menu hidden">
+          <button id="logout-btn">Đăng xuất</button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -55,61 +66,94 @@
     <section class="product-grid">
 
       <div class="product-card" data-desc="Bút dạ quang màu Morandi Hi! Line Thiên Long HL-024, chống khô mực.">
-        <img src="image\gel-068_2_af09ea4f02ce44839e3ff11fb4ea14de_large.jpg" alt="">
+        <img src="image/gel-068_2_af09ea4f02ce44839e3ff11fb4ea14de_large.jpg" alt="">
         <h3>Bút dạ quang HL-024</h3>
         <p class="price-text">7.200₫</p>
       </div>
 
       <div class="product-card" data-desc="Sổ lò xo A5 100 trang, giấy dày, dễ viết.">
-        <img src="image\995-800x800.jpg" alt="">
+        <img src="image/995-800x800.jpg" alt="">
         <h3>Sổ còng Thiên Long</h3>
         <p class="price-text">18.800₫</p>
       </div>
 
       <div class="product-card" data-desc="Kẹp giấy cỡ lớn, 51mm, hộp 12 cái.">
-        <img src="image\bia-kep-giay-a4-cung-chinh-hang.jpg" alt="">
+        <img src="image/bia-kep-giay-a4-cung-chinh-hang.jpg" alt="">
         <h3>Kẹp giấy</h3>
         <p class="price-text">25.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Băng keo trong 2.4cm x 100 yard.">
-        <img src="image\keobb.jpg" alt="">
+        <img src="image/keobb.jpg" alt="">
         <h3>Băng keo trong</h3>
         <p class="price-text">10.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Giấy note dán màu vàng, 100 tờ.">
-        <img src="image\note.jpg" alt="">
+        <img src="image/note.jpg" alt="">
         <h3>Giấy note vàng</h3>
         <p class="price-text">9.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Kéo văn phòng lưỡi thép không gỉ, cán nhựa.">
-        <img src="image\keo.jpg" alt="">
+        <img src="image/keo.jpg" alt="">
         <h3>Kéo văn phòng</h3>
         <p class="price-text">18.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Ghim giấy số 10, hộp 1000 cái.">
-        <img src="image\ghim.jpg" alt="">
+        <img src="image/ghim.jpg" alt="">
         <h3>Ghim giấy số 10</h3>
         <p class="price-text">6.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Dao rọc giấy nhỏ, lưỡi sắc bén, an toàn.">
-        <img src="image\da0.jpg" alt="">
+        <img src="image/da0.jpg" alt="">
         <h3>Dao rọc giấy nhỏ</h3>
         <p class="price-text">12.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Khay đựng hồ sơ nhựa 3 tầng.">
-        <img src="image\khay.jpg" alt="">
+        <img src="image/khay.jpg" alt="">
         <h3>Khay đựng hồ sơ</h3>
         <p class="price-text">85.000₫</p>
       </div>
 
     </section>
   </main>
+
+<!--TƯƠNG TÁC ĐĂNG NHẬP/ĐĂNG KÝ-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("login-link");
+  const userProfile = document.getElementById("user-profile");
+  const usernameDisplay = document.getElementById("username-display");
+  const logoutBtn = document.getElementById("logout-btn");
+  const logoutMenu = document.getElementById("logout-menu");
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (user) {
+    usernameDisplay.textContent = user.username;
+    loginLink.classList.add("hidden");
+    userProfile.classList.remove("hidden");
+  } else {
+    loginLink.classList.remove("hidden");
+    userProfile.classList.add("hidden");
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.reload();
+    });
+  }
+
+  // Hiện menu Đăng xuất khi hover
+  userProfile.addEventListener("mouseenter", () => logoutMenu.classList.remove("hidden"));
+  userProfile.addEventListener("mouseleave", () => logoutMenu.classList.add("hidden"));
+});
+</script>
 
   <script src="script.js"></script>
 </body>

@@ -24,13 +24,24 @@
 
   <div class="user-info">
     <div class="cart-section">
-      <button id="view-cart-btn" class="cart-btn">🛒</button>
-    </div>
+      <button id="view-cart-btn" class="cart-btn">
+  🛒
+  <span id="cart-count" class="cart-count">0</span>
+</button>
+
+    <!-- Đăng nhập / Hồ sơ người dùng -->
     <div class="auth-section">
       <a href="auth.html" id="login-link" class="login-btn">
         <span class="login-icon">👤</span>
         <span class="login-text">Đăng nhập</span>
       </a>
+      <div id="user-profile" class="user-profile hidden">
+        <span class="user-icon">👤</span>
+        <span id="username-display">Người dùng</span>
+        <div id="logout-menu" class="logout-menu hidden">
+          <button id="logout-btn">Đăng xuất</button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -56,67 +67,100 @@
     <section class="product-grid">
 
      <div class="product-card" data-desc="Bút bi Thiên Long TL-08 mực xanh, nét viết mượt.">
-        <img src="image\but-bi-thien-long-tl-08_1082ee73c355488fb25ee340f19e306b.jpg" alt="">
+        <img src="image/but-bi-thien-long-tl-08_1082ee73c355488fb25ee340f19e306b.jpg" alt="">
         <h3>Bút bi Thiên Long TL-08</h3>
         <p class="price-text">5.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Thước kẻ 20cm nhựa trong suốt.">
-        <img src="image\thuoc20.jpg" alt="">
+        <img src="image/thuoc20.jpg" alt="">
         <h3>Thước kẻ 20cm</h3>
         <p class="price-text">4.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Tẩy bút chì Staedtler Dust-Free, không lem.">
-        <img src="image\taygom.jpg" alt="">
+        <img src="image/taygom.jpg" alt="">
         <h3>Tẩy gôm</h3>
         <p class="price-text">12.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Gọt bút chì Thiên Long 2 lỗ.">
-        <img src="image\chuot-chi-maped-boogy-lon-2-lo-1.jpg" alt="">
+        <img src="image/chuot-chi-maped-boogy-lon-2-lo-1.jpg" alt="">
         <h3>Gọt bút chì 2 lỗ</h3>
         <p class="price-text">9.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Compa học sinh, kim chuẩn, dễ sử dụng.">
-        <img src="image\compa-deli.jpg" alt="">
+        <img src="image/compa-deli.jpg" alt="">
         <h3>Compa học sinh</h3>
         <p class="price-text">22.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Bút chì gỗ 2B, hộp 12 cây, dễ chuốt.">
-        <img src="image\artboard_8_6876e24d08d94230a94ecd5a1a14e221.jpg" alt="">
+        <img src="image/artboard_8_6876e24d08d94230a94ecd5a1a14e221.jpg" alt="">
         <h3>Bút chì gỗ 2B</h3>
         <p class="price-text">20.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Bút máy học sinh Thiên Long PT-02, ngòi mảnh.">
-        <img src="image\but-may-picasso-915-FR-6.jpg" alt="">
+        <img src="image/but-may-picasso-915-FR-6.jpg" alt="">
         <h3>Bút máy PT-02</h3>
         <p class="price-text">35.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Bảng con viết phấn 2 mặt, có khung viền nhựa.">
-        <img src="image\500_bang_hoc_sinh_ren_chu.jpg" alt="">
+        <img src="image/500_bang_hoc_sinh_ren_chu.jpg" alt="">
         <h3>Bảng con 2 mặt</h3>
         <p class="price-text">28.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Bộ dụng cụ học sinh 5 món.">
-        <img src="image\bo-dung-cu-hoc-tap-mini-5-mon1-b46c622c-bdfd-4ecd-8b2c-3f6fde84fa57.jpg" alt="">
+        <img src="image/bo-dung-cu-hoc-tap-mini-5-mon1-b46c622c-bdfd-4ecd-8b2c-3f6fde84fa57.jpg" alt="">
         <h3>Bộ học cụ 5 món</h3>
         <p class="price-text">38.000₫</p>
       </div>
 
       <div class="product-card" data-desc="Bút lông bảng Thiên Long WB-02, mực đậm.">
-        <img src="image\artboard_1_copy_3736adce87e141f88eaccda55f84fb7a.jpg" alt="">
+        <img src="image/artboard_1_copy_3736adce87e141f88eaccda55f84fb7a.jpg" alt="">
         <h3>Bút lông bảng WB-02</h3>
         <p class="price-text">10.000₫</p>
       </div>
 
     </section>
   </main>
+
+<!--TƯƠNG TÁC ĐĂNG NHẬP/ĐĂNG KÝ-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("login-link");
+  const userProfile = document.getElementById("user-profile");
+  const usernameDisplay = document.getElementById("username-display");
+  const logoutBtn = document.getElementById("logout-btn");
+  const logoutMenu = document.getElementById("logout-menu");
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (user) {
+    usernameDisplay.textContent = user.username;
+    loginLink.classList.add("hidden");
+    userProfile.classList.remove("hidden");
+  } else {
+    loginLink.classList.remove("hidden");
+    userProfile.classList.add("hidden");
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.reload();
+    });
+  }
+
+  // Hiện menu Đăng xuất khi hover
+  userProfile.addEventListener("mouseenter", () => logoutMenu.classList.remove("hidden"));
+  userProfile.addEventListener("mouseleave", () => logoutMenu.classList.add("hidden"));
+});
+</script>
 
   <script src="script.js"></script>
 </body>

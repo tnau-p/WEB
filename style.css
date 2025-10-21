@@ -80,6 +80,11 @@ body {
   font-size: 18px;
   opacity: 0.8;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 .search-btn:hover {
   opacity: 1;

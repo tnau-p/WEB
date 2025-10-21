@@ -96,35 +96,35 @@
         <button onclick="prev()">◀</button>
 
         <div class="product">
-          <img src="image\balo.jpg" alt="">
+          <img src="image/balo.jpg" alt="">
           <h3>Balo học sinh</h3>
           <p class="price">538.000đ</p>
         
         </div>
 
         <div class="product">
-          <img src="image\taygom.jpg" alt="">
+          <img src="image/taygom.jpg" alt="">
           <h3>Tẩy gôm</h3>
           <p class="price">5.000₫</p>
          
         </div>
 
         <div class="product">
-          <img src="image\biacong.jpg" alt="">
+          <img src="image/biacong.jpg" alt="">
           <h3>Bìa còng</h3>
           <p class="price">20.000đ</p>
        
         </div>
 
         <div class="product">
-          <img src="image\but2lai.jpg" alt="">
+          <img src="image/but2lai.jpg" alt="">
           <h3>Bút hightlight</h3>
           <p class="price">22.000đ</p>
        
         </div>
 
         <div class="product">
-          <img src="image\so-tay-mini-1.png" alt="">
+          <img src="image/so-tay-mini-1.png" alt="">
           <h3>Sổ dễ thương</h3>
           <p class="price">30.000đ</p>
          
@@ -135,6 +135,39 @@
       </div>
     </section>
   </main>
+
+<!--TƯƠNG TÁC ĐĂNG NHẬP/ĐĂNG KÝ-->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("login-link");
+  const userProfile = document.getElementById("user-profile");
+  const usernameDisplay = document.getElementById("username-display");
+  const logoutBtn = document.getElementById("logout-btn");
+  const logoutMenu = document.getElementById("logout-menu");
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (user) {
+    usernameDisplay.textContent = user.username;
+    loginLink.classList.add("hidden");
+    userProfile.classList.remove("hidden");
+  } else {
+    loginLink.classList.remove("hidden");
+    userProfile.classList.add("hidden");
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.reload();
+    });
+  }
+
+  // Hiện menu Đăng xuất khi hover
+  userProfile.addEventListener("mouseenter", () => logoutMenu.classList.remove("hidden"));
+  userProfile.addEventListener("mouseleave", () => logoutMenu.classList.add("hidden"));
+});
+</script>
 
 <footer class="footer">
   <div class="footer-content">
